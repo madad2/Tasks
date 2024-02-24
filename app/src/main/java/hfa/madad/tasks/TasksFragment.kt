@@ -25,6 +25,8 @@ class TasksFragment : Fragment() {
 
         val viewModelFactory = TaskViewModelFactory(dao)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(TaskViewModel::class.java)
+        //Включает связывание данных, чтобы макет мог использовать его для обращения к свойствам и методам модели представления
+        binding.viewModel = viewModel
 
         return view
     }
