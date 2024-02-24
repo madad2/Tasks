@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".TasksFragment">
 
-    <data></data>
+    <data>
+
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
