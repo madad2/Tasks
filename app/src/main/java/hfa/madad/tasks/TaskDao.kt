@@ -10,16 +10,16 @@ import androidx.room.Update
 @Dao
 interface TaskDao {
     @Insert
-    fun insert(task: Task)
+    suspend fun insert(task: Task)
 
     @Insert
-    fun insertAll(tasks: List<Task>)
+    suspend fun insertAll(tasks: List<Task>)
 
     @Update
-    fun update(task: Task)
+    suspend fun update(task: Task)
 
     @Delete
-    fun delete(task: Task)
+    suspend fun delete(task: Task)
 
     @Query("SELECT * FROM task_table WHERE taskId = :taskId")
     fun get(taskId: Long): LiveData<Task>
