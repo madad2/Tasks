@@ -42,7 +42,5 @@ class TaskItemAdapter : RecyclerView.Adapter<TaskItemAdapter.TaskItemViewHolder>
         fun bind(item: Task) {
             rootView.text = item.taskName
         }
-
-
     }
 }

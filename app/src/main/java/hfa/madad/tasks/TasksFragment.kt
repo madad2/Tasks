@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import hfa.madad.tasks.databinding.FragmentTasksBinding
 
@@ -28,6 +29,16 @@ class TasksFragment : Fragment() {
         //Включает связывание данных, чтобы макет мог использовать его для обращения к свойствам и методам модели представления
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+        val adapter = TaskItemAdapter()
+        binding.tasksList.adapter = adapter
+
+        //Наблюдаем за свойством tasks модели представления
+        viewModel.tasks.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
 
         return view
     }
