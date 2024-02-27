@@ -1,4 +1,4 @@
-package hfa.madad.tasks
+package hfa.madad.tasks.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import hfa.madad.tasks.ui.adapters.TaskItemAdapter
+import hfa.madad.tasks.viewmodels.TaskViewModelFactory
 import hfa.madad.tasks.databinding.FragmentTasksBinding
+import hfa.madad.tasks.models.TaskDatabase
+import hfa.madad.tasks.viewmodels.TaskViewModel
 
 class TasksFragment : Fragment() {
     private var _binding: FragmentTasksBinding? = null
@@ -32,11 +37,7 @@ class TasksFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         val adapter = TaskItemAdapter { taskID ->
-            Toast.makeText(
-                context,
-                "Clicked task $taskID",
-                Toast.LENGTH_SHORT
-            ).show()
+            viewModel.onTaskClicked(taskID)
         }
         binding.tasksList.adapter = adapter
 
@@ -44,6 +45,14 @@ class TasksFragment : Fragment() {
         viewModel.tasks.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        //Этот код должен выполняться тогда, когда navigateToTask присваивается новое значение taskId, отличное от null.
+        viewModel.navigateToTask.observe(viewLifecycleOwner, Observer { taskID ->
+            taskID?.let {
+                val action = TasksFragmentDirections.actionTasksFragmentToEditTaskFragment(taskID)
+                this.findNavController().navigate(action)
             }
         })
 

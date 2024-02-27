@@ -1,4 +1,4 @@
-package hfa.madad.tasks
+package hfa.madad.tasks.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

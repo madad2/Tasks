@@ -1,7 +1,8 @@
-package hfa.madad.tasks
+package hfa.madad.tasks.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import hfa.madad.tasks.models.TaskDao
 import java.lang.IllegalArgumentException
 
 class TaskViewModelFactory(private val dao: TaskDao) : ViewModelProvider.Factory {

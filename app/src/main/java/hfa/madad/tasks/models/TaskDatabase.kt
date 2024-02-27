@@ -1,4 +1,4 @@
-package hfa.madad.tasks
+package hfa.madad.tasks.models
 
 import android.content.Context
 import androidx.room.Database

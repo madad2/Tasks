@@ -6,7 +6,7 @@
 
         <variable
             name="task"
-            type="hfa.madad.tasks.Task" />
+            type="hfa.madad.tasks.models.Task" />
     </data>
 
     <androidx.cardview.widget.CardView

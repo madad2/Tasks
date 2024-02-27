@@ -1,15 +1,11 @@
-package hfa.madad.tasks
+package hfa.madad.tasks.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import hfa.madad.tasks.databinding.TaskItemBinding
-import hfa.madad.tasks.generated.callback.OnClickListener
+import hfa.madad.tasks.models.Task
 
 class TaskItemAdapter(val clickListener: (taskID: Long) -> Unit) :
     ListAdapter<Task, TaskItemAdapter.TaskItemViewHolder>(TaskDiffItemCallback()) {
