@@ -36,7 +36,7 @@ class TasksFragment : Fragment() {
         //Наблюдаем за свойством tasks модели представления
         viewModel.tasks.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 
